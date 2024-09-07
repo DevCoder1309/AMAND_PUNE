@@ -7,7 +7,7 @@ export default function Home(){
   };
     return (
     <div>
-      welcome to home
+      <h1>welcome to home </h1><br /><br />
       <button onClick={handleDonate}>Contribute</button>
     </div>
   );
