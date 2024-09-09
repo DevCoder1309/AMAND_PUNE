@@ -52,32 +52,36 @@ app.post("/payment", async (req, res) => {
   }
 
   try {
+    // Handle honorary membership (send email only)
     if (membershipType === "honorary") {
       const mailOptions = {
         from: "akmklashnikov969@gmail.com",
         to: email,
         subject: "Thank you for your interest in Honorary Membership",
-        text: "Please fill the google form: <google_form_to_be_attached>",
+        text: "Please fill out the google form: <google_form_to_be_attached>",
       };
       transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.error("Error sending email:", error);
+          return res.status(500).send("Error sending email.");
         } else {
           console.log("Email sent:", info.response);
+          // Redirect to success page after sending the email
+          return res.json({
+            success: true,
+            message: "Email sent successfully!",
+          });
         }
       });
-      console.log("data has been sent")
-      res.send(
-        "Thank you for your interest in Honorary Membership. Please check your email for further instructions."
-      );
     } else {
+      // Handle paid memberships
       const product = await stripe.products.create({
         name: productName,
       });
 
       const priceData = await stripe.prices.create({
         product: product.id,
-        unit_amount: price * 100, 
+        unit_amount: price * 100,
         currency: "inr",
       });
 
@@ -89,7 +93,7 @@ app.post("/payment", async (req, res) => {
           },
         ],
         mode: "payment",
-        success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `http://localhost:5173/success`,
         cancel_url: "http://localhost:5173/cancel",
         customer_email: email,
       });

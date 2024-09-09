@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function MembershipForm() {
   const { membershipName } = useParams();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
@@ -13,8 +14,14 @@ function MembershipForm() {
         membershipType: membershipName, 
         email: data.email,
       });
+
       if (response.status === 200) {
-        window.location.href = response.data.url;
+        if (response.data.url) {
+          window.location.href = response.data.url;
+        } else {
+          navigate('/success');
+          
+        }
       } else {
         console.error("Invalid payment session response");
       }

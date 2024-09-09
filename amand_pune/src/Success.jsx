@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Alert, Snackbar } from '@mui/material';
 
-export default function Success() {
-  const [message, setMessage] = useState("");
-  const location = useLocation(); 
+function Success() {
+  const navigate = useNavigate();
+  const [open, setOpen] = React.useState(true);
 
   useEffect(() => {
-    const verifyPayment = async () => {
-      const query = new URLSearchParams(location.search);
-      const sessionId = query.get("session_id");
-
-      try {
-        const response = await axios.get(`http://localhost:3000/success?session_id=${sessionId}`);
-        setMessage(response.data);
-      } catch (error) {
-        console.error("Error verifying payment:", error);
-        setMessage("Error verifying payment.");
-      }
-    };
-
-    verifyPayment();
-  }, [location]);
+    const timer = setTimeout(() => {
+      setOpen(false);
+      navigate('/');
+    }, 6000); 
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
-    <div>
-      <h1>{message || "Verifying payment..."}</h1>
-      <a href="/">Click here to go back to home page</a>
-    </div>
+    <Snackbar
+      open={open}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      autoHideDuration={4000}
+    >
+      <Alert severity="success" sx={{ width: '100%' }}>
+        Payment was successful! Please check your email for more details and the onboarding form.
+      </Alert>
+    </Snackbar>
   );
 }
+
+export default Success;

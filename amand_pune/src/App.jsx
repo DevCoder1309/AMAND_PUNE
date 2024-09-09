@@ -1,4 +1,3 @@
-// App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Donate from './Donate';
@@ -13,7 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/donate/:membershipName" element={<MembershipForm />} />
-        <Route path="/success" element={<Success />} />
+        <Route path="/success" element={<Success/>} />
       </Routes>
     </Router>
   );
