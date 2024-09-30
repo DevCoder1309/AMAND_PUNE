@@ -1,30 +1,24 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Alert, Snackbar } from '@mui/material';
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 function Success() {
-  const navigate = useNavigate();
-  const [open, setOpen] = React.useState(true);
+  const [searchParams] = useSearchParams();
+  const session_id = searchParams.get("session_id");
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(false);
-      navigate('/');
-    }, 6000); 
-    return () => clearTimeout(timer);
-  }, [navigate]);
+    if (session_id) {
+      axios.get(`http://localhost:3000/success?session_id=${session_id}`)
+        .then(response => {
+          console.log(response.data.message);
+        })
+        .catch(error => {
+          console.error("Error validating session", error);
+        });
+    }
+  }, [session_id]);
 
-  return (
-    <Snackbar
-      open={open}
-      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      autoHideDuration={4000}
-    >
-      <Alert severity="success" sx={{ width: '100%' }}>
-        Payment was successful! Please check your email for more details and the onboarding form.
-      </Alert>
-    </Snackbar>
-  );
+  return <div>Payment Successful! Thank you for your membership.</div>;
 }
 
 export default Success;

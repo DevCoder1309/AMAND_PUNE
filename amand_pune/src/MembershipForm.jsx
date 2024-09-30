@@ -13,14 +13,17 @@ function MembershipForm() {
       const response = await axios.post('http://localhost:3000/payment', {
         membershipType: membershipName, 
         email: data.email,
+        name: data.name,
+        mobile: data.mobile
       });
 
       if (response.status === 200) {
         if (response.data.url) {
           window.location.href = response.data.url;
+          console.log('navigated')
         } else {
           navigate('/success');
-          
+          console.log('navigating to /success')
         }
       } else {
         console.error("Invalid payment session response");
@@ -74,5 +77,6 @@ function MembershipForm() {
     </div>
   );
 }
+
 
 export default MembershipForm;

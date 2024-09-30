@@ -44,12 +44,16 @@ export default function Home() {
     navigate('/donate');  
   };
 
+  const handleLogin = () => {
+    navigate('/Login')
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Organization Name
+            Association of Manipuri Diaspora
           </Typography>
           <Button color="inherit">About Us</Button>
           <Button color="inherit">Events & Activities</Button>
@@ -57,6 +61,7 @@ export default function Home() {
           <Button color="inherit">In the News</Button>
           <Button color="inherit" onClick={handleMembership}>Membership</Button>
           <Button color="inherit">Reach Us</Button>
+          <Button color="inherit" onClick={handleLogin}>Login</Button>
         </Toolbar>
       </AppBar>
 

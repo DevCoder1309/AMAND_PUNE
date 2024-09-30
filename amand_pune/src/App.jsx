@@ -4,6 +4,7 @@ import Donate from './Donate';
 import MembershipForm from './MembershipForm'; 
 import Home from './Home';
 import Success from './Success'
+import Login from './Login';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/donate" element={<Donate />} />
         <Route path="/donate/:membershipName" element={<MembershipForm />} />
         <Route path="/success" element={<Success/>} />
+        <Route path="/Login" element={<Login/>} />
       </Routes>
     </Router>
   );
