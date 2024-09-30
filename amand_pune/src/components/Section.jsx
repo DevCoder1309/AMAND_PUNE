@@ -1,18 +1,18 @@
-const Section = ({ image, header, text }) => {
+const Section = ({ image, header, text, type }) => {
   return (
-    <section className="flex flex-col items-center justify-center text-center p-[3.5rem]">
+    <section
+      className={`flex flex-col items-center justify-center text-center md:flex-row ${
+        type === "right" ? "md:flex-row-reverse" : ""
+      }`}
+    >
       <div>
-        <img
-          src={image}
-          className="w-[15rem] md:w-[30rem]"
-          alt="say no to violence"
-        ></img>
+        <img src={image} className="w-[15rem] md:w-[25rem]" alt={header} />
       </div>
-      <div className="p-[1.5rem] text-left">
-        <div className="text-[18px] font-bold uppercase lg:text-[24px]">
+      <div className="p-[1.5rem] text-left md:w-1/2">
+        <div className="text-[12px] font-bold uppercase md:text-[24px]">
           {header}
         </div>
-        <p className="text-[14px] text-left lg:text-[20px]">{text}</p>
+        <p className="text-[10px] text-left md:text-[16px]">{text}</p>
       </div>
     </section>
   );
