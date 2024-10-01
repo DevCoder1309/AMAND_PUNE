@@ -10,7 +10,7 @@ const Membership = () => {
       />
       <div className="flex flex-col gap-[2.6rem] md:flex-row w-[18rem] md:w-[50rem]">
         <PlanCard
-          name="Life"
+          name="lifetime"
           price="₹1000"
           planDesc="One-time membership fee of ₹1000. Additionally, a monthly subscription of ₹100 is required, which is subject to change as decided by the General Body. Membership is granted upon approval by the managing committee."
         />

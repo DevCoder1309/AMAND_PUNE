@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const PlanCard = ({ name, price, planDesc, special }) => {
+const PlanCard = ({ name, price, planDesc, special}) => {
   return (
     <div className="flex flex-col bg-white w-full gap-10 text-center  xs:w-[15rem] rounded-md">
       <div className="text-2xl uppercase text-left p-3 font-semibold">
@@ -7,7 +7,7 @@ const PlanCard = ({ name, price, planDesc, special }) => {
       </div>
       <div className="text-3xl font-semibold px-5">{price}</div>
       <div className=" text-left text-[12px] p-5">{planDesc}</div>
-      <Link to="/form">
+      <Link to = {`/form/${name}`}>
         <div
           className={`${special ? "bg-primary" : "bg-[#989595]"} w-full p-2`}
         >

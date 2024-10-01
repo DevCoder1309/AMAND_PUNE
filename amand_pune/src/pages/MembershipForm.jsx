@@ -12,29 +12,29 @@ function MembershipForm() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    try {
-      const response = await axios.post("http://localhost:3000/payment", {
-        membershipType: membershipName,
-        email: data.email,
-        name: data.name,
-        mobile: data.mobile,
-      });
+  console.log("Form Data:", data);
+  console.log("Form Data:", name);
+  try {
+    const response = await axios.post("http://localhost:3000/payment", {
+      membershipType: membershipName,
+      email: data.email,
+      name: data.name,
+      mobile: data.mobile,
+    });
 
-      if (response.status === 200) {
-        if (response.data.url) {
-          window.location.href = response.data.url;
-          console.log("navigated");
-        } else {
-          navigate("/success");
-          console.log("navigating to /success");
-        }
+    if (response.status === 200) {
+      if (response.data.url) {
+        window.location.href = response.data.url;
       } else {
-        console.error("Invalid payment session response");
+        navigate("/success");
       }
-    } catch (error) {
-      console.error("Error processing payment:", error);
+    } else {
+      console.error("Invalid payment session response");
     }
-  };
+  } catch (error) {
+    console.error("Error processing payment:", error.response ? error.response.data : error.message);
+  }
+};
 
   return (
     <div className="flex flex-col py-9 px-5 md:px-[8.75rem] bg-bgColor min-h-screen">

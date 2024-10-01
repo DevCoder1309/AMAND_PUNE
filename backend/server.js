@@ -9,10 +9,12 @@ const stripe = require("stripe")(process.env.SECRET_TOKEN);
 const nodemailer = require("nodemailer");
 const User = require("./models/users"); 
 const session = require('express-session');
-const UserOtpVerification = require('./models/userotpverification')
-const bcrypt = require('bcrypt')
+const app = express();
 
-let latch = false;
+
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 const secretConfig = {
@@ -25,7 +27,7 @@ const secretConfig = {
   },
 };
 
-const app = express();
+
 app.use(session(secretConfig));
 
 
@@ -38,9 +40,7 @@ mongoose
     console.log(err);
   });
 
-app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -50,64 +50,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.get("/login", async (req, res) => {
-  const { email } = req.query; 
-  const member = await User.findOne({ email });
-  if (member) {
-    try {
-      const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
-      const mailOptions = {
-        from: "akmklashnikov969@gmail.com",
-        to: email,
-        subject: "Verify your email",
-        html: `<p>Your OTP is: ${otp}</p>`,
-      };
-      const saltRounds = 10;
-      const hashedOtp = await bcrypt.hash(otp, saltRounds);
-      const newOtp = new UserOtpVerification({
-        otp: hashedOtp,
-        createdAt: Date.now(),
-        expiresAt: Date.now() + 3600000,
-      });
-      await newOtp.save();
-      await transporter.sendMail(mailOptions);
-
-      return res.json({ success: true, message: "OTP sent successfully" });
-    } catch (err) {
-      console.log(err);
-      return res
-        .status(500)
-        .json({ success: false, message: "Error sending OTP" });
-    }
-  } else {
-    return res.status(404).json({ success: false, message: "User not found" });
-  }
-});
-
-
-app.post("/verify-otp", async (req, res) => {
-  const { email, otp } = req.body;
-
-  const userOtp = await UserOtpVerification.findOne({ email }).sort({
-    createdAt: -1,
-  }); 
-  if (!userOtp || userOtp.expiresAt < Date.now()) {
-    return res
-      .status(400)
-      .json({ success: false, message: "OTP has expired or does not exist" });
-  }
-
-  const isMatch = await bcrypt.compare(otp, userOtp.otp);
-  if (isMatch) {
-    return res.json({ success: true, message: "OTP verified successfully" });
-  } else {
-    return res.status(400).json({ success: false, message: "Invalid OTP" });
-  }
-});
-
 app.post("/payment", async (req, res) => {
   const { membershipType, email, name, mobile } = req.body;
-
   const membershipPrices = {
     lifetime: 1000,
     regular: 200,
@@ -157,7 +101,6 @@ app.post("/payment", async (req, res) => {
     });
     req.session.stripeSessionId = stripeSession.id;
     req.session.user = { membershipType, name, email, mobile };
-    latch = true
 
     res.json({ url: stripeSession.url });
   } catch (error) {
@@ -170,7 +113,7 @@ app.post("/payment", async (req, res) => {
 app.get("/success", async (req, res) => {
   const session_id = req.query.session_id;
 
-  if (!session_id && !latch) {
+  if (!session_id) {
     return res.status(400).json({ error: "Invalid session" });
   }
 
@@ -181,7 +124,6 @@ app.get("/success", async (req, res) => {
     if (!session || session.payment_status !== "paid") {
       return res.status(400).json({ error: "Payment not verified" });
     }
-
 
     const { membershipType, email, name, mobile } = session.metadata;
 
