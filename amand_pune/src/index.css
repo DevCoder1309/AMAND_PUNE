@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --white-bg: #f6f4eb;
+    --font-color: #404040;
+    --primary-green: #5add6e69;
+    --secondary-green: #1bc83569;
+  }
+}
