@@ -1,5 +1,3 @@
-import daisyui from "daisyui";
-
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -14,16 +12,11 @@ export default {
       },
     },
     screens: {
-      xs: "320px",
+      xs: "375px",
       sm: "640px",
-      md: "768px",
+      md: "775px",
       lg: "1024px",
       xl: "1280px",
     },
-  },
-
-  plugins: [daisyui],
-  daisyui: {
-    darkTheme: "light",
   },
 };
