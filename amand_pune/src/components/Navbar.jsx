@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-primary flex flex-col w-full  px-[1rem] p-2 gap-4 md:flex-row md:justify-around md:items-center">
+    <div className="bg-primary flex flex-col w-full  px-[1rem] p-2 gap-2  md:flex-row md:justify-around md:items-center">
       <div className="flex">
         <Link to="/">
           <img src={Logo} alt="logo" className="w-10" />
@@ -39,7 +39,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="cursor-pointer flex justify-center items-center bg-secondary h-[2rem] rounded w-[6rem]">
+      <div className="xs:max-md:absolute xs:max-md:top-4 xs:max-md:left-20 cursor-pointer flex justify-center items-center bg-secondary h-[2rem] rounded w-[6rem]">
         <Link to="/contact">
           <button className="text-[0.75rem] font-semibold cursor-pointer text-center">
             CONTACT US
