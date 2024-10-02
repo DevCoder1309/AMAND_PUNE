@@ -8,6 +8,7 @@ import News from "./pages/News";
 import Membership from "./pages/Membership";
 import Contact from "./pages/Contact";
 import MembershipForm from "./pages/MembershipForm";
+import EventPage from "./pages/EventPage";
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/membership" element={<Membership />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/form" element={<MembershipForm />} />
+        <Route path="/eventPage" element={<EventPage />} />
       </Routes>
       <Footer />
     </>
