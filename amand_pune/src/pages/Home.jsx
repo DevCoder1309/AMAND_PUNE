@@ -5,7 +5,7 @@ import About from "../assets/about.png";
 
 function Home() {
   return (
-    <div className="bg-bgColor flex flex-col justify-center items-center">
+    <div className="bg-bgColor flex flex-col justify-center items-center no-scrollbar">
       <img src={Hero} alt="hero" className="w-full" />
       <div className="flex flex-col p-[3rem] gap-[2.5rem] md:gap-[4rem]">
         <Section

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const PlanCard = ({ name, price, planDesc, special }) => {
   return (
-    <div className="flex flex-col bg-white w-full gap-10 text-center  xs:w-[15rem] rounded-md">
+    <div className="flex flex-col bg-white w-full gap-10 text-center rounded-md">
       <div className="text-2xl uppercase text-left p-3 font-semibold">
         {name}
       </div>

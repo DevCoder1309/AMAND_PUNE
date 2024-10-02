@@ -8,7 +8,7 @@ const Membership = () => {
         headerName="Membership"
         pageDesc="Membership in AMAND Pune is open to individuals from Manipur, regardless of religion or background, who are of legal age and either employed, self-employed, or retired. Members must adhere to the association's rules and can apply for different membership types: lifetime, regular, or honorary. Each membership type has specific criteria and fees, and applications require approval from the managing committee."
       />
-      <div className="flex flex-col gap-[2.6rem] md:flex-row w-[18rem] md:w-[50rem]">
+      <div className="flex flex-col gap-[2.6rem] md:flex-row w-[18rem] md:w-[55rem]">
         <PlanCard
           name="Life"
           price="₹1000"
