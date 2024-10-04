@@ -110,6 +110,7 @@ app.post("/payment", async (req, res) => {
       automatic_payment_methods: {
         enabled: true,
       },
+      
     });
   } catch (error) {
     console.error("Error creating payment session:", error);
