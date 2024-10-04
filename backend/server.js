@@ -105,7 +105,7 @@ app.post("/payment", async (req, res) => {
 
     res.json({ url: stripeSession.url });
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 000,
+      amount: ,
       currency: "inr",
       automatic_payment_methods: {
         enabled: true,
