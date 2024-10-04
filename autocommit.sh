@@ -4,5 +4,5 @@ while true; do
         git commit -m "Process of AutoCommit"
         git push
     fi
-    sleep(10)
+    # sleep(10)
 done
