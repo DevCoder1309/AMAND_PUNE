@@ -97,7 +97,7 @@ app.post("/payment", async (req, res) => {
       success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: "http://localhost:5173/cancel",
       customer_email: email,
-      // receipt_email: email,
+      receipt_email: email,
       metadata: { membershipType, name, email, mobile },
     });
     req.session.stripeSessionId = stripeSession.id;
