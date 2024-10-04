@@ -6,7 +6,7 @@ import Ladies from "../assets/ladies.png";
 import Nongin from "../assets/nongin.png";
 const Events = () => {
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col justify-center items-center py-[5rem] px-[3rem] md:px-[5rem] gap-[5rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col justify-center items-center py-[2rem] px-[4rem] md:px-[11.5rem] gap-[5rem]">
       <Header
         headerName="Events"
         pageDesc="The Association of Manipuri Diaspora (AMAND) Pune conducts a diverse range of events that foster cultural exchange and enhance community involvement. These events celebrate the rich heritage of the Manipuri diaspora, serving as vital platforms for strengthening bonds within the community.

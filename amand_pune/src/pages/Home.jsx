@@ -5,13 +5,13 @@ import About from "../assets/about.png";
 
 function Home() {
   return (
-    <div className="bg-bgColor flex flex-col justify-center items-center no-scrollbar">
+    <div className="bg-bgColor flex flex-col justify-center items-center">
       <img src={Hero} alt="hero" className="w-full" />
-      <div className="flex flex-col p-[3rem] gap-[2.5rem] md:gap-[4rem]">
+      <div className="flex flex-col px-[4rem] py-[2rem] gap-[2.5rem] md:gap-[4rem]">
         <Section
           image={Mission}
           header="Our Mission"
-          text="          At Amand Pune, our mission is to drive social change by empowering
+          text="At Amand Pune, our mission is to drive social change by empowering
           underserved communities through sustainable initiatives in education,
           healthcare, and social development. We strive to create equitable
           opportunities for all, fostering environments where individuals can

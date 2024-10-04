@@ -4,20 +4,29 @@
 
 @layer base {
   :root {
-    --white-bg: #f6f4eb;
+    --white-bg: #e9f5db;
     --font-color: #404040;
-    --primary-green: #5add6e69;
-    --secondary-green: #1bc83569;
+    --primary-green: #c7f9cc;
+    --secondary-green: #80ed99;
   }
 }
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+@font-face {
+  font-family: "Charter";
+  src: url(./font/charter/ttf/Charter-Regular.ttf);
+}
 
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+@font-face {
+  font-family: "Montserrat";
+  src: url(./font/montserrat/Montserrat-Medium.ttf);
+}
+
+/* Hover background color with transition */
+.hover-bg-color {
+  @apply hover:bg-[#c7f9cc] transition-colors ease-in duration-300;
+}
+
+/* Hover font color with transition */
+.hover-font-color {
+  @apply hover:text-[#80ed99] transition-colors ease-in duration-300;
 }

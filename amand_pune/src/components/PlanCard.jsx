@@ -1,20 +1,27 @@
 import { Link } from "react-router-dom";
 const PlanCard = ({ name, price, planDesc, special }) => {
   return (
-    <div className="flex flex-col bg-white w-full gap-10 text-center rounded-md">
-      <div className="text-2xl uppercase text-left p-3 font-semibold">
-        {name}
-      </div>
-      <div className="text-3xl font-semibold px-5">{price}</div>
-      <div className=" text-left text-[12px] p-5">{planDesc}</div>
-      <Link to="/form">
+    <Link to="/form">
+      <div className="flex flex-col bg-white w-full gap-10 text-center rounded-md border-primary border-gray-200 border-2 hover-bg-color cursor-pointer">
+        <div className="text-[18px] md:text-[22px] uppercase text-left p-3 font-medium font-mont">
+          {name}
+        </div>
+        <div className="text-[20px] md:text-[24px] font-semibold px-5">
+          {price}
+        </div>
+        <div className=" text-left text-[12px] md:text-[16px] p-4 font-charter">
+          {planDesc}
+        </div>
+
         <div
-          className={`${special ? "bg-primary" : "bg-[#989595]"} w-full p-2`}
+          className={`${
+            special ? "bg-secondary" : "bg-primary"
+          } w-full p-2 font-mont uppercase`}
         >
           Join
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

@@ -5,43 +5,65 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(true);
+
   const handleMenu = () => {
     setOpenMenu(!openMenu);
   };
 
+  const handleLinkClick = () => {
+    if (window.innerWidth <= 768) {
+      handleMenu();
+    }
+  };
+
   return (
-    <div className="bg-primary flex flex-col w-full  px-[1rem] p-2 gap-2  md:flex-row md:justify-around md:items-center">
+    <div className="bg-primary flex flex-col w-full px-[4rem] py-[1rem] gap-2 md:flex-row md:justify-between md:items-center ">
       <div className="flex">
         <Link to="/">
           <img src={Logo} alt="logo" className="w-10" />
         </Link>
       </div>
+
       <div onClick={handleMenu} className="md:hidden">
-        <IoMdMenu className="absolute right-8 top-4 cursor-pointer" />
+        <IoMdMenu className="text-[22px] absolute right-8 top-4 cursor-pointer" />
       </div>
+
       <div
         className={`${
           openMenu ? "flex" : "hidden"
-        } flex-col md:flex-row md:justify-center md:items-center`}
+        } flex-col md:flex md:flex-row md:justify-center md:items-center`}
       >
-        <ul className="text-[0.75rem] px-1 flex gap-[1rem] flex-col md:flex-row">
-          <li className="font-semibold cursor-pointer">
+        <ul className="text-[14px] px-1 flex gap-[1rem] flex-col md:flex-row ">
+          <li
+            onClick={handleLinkClick}
+            className="font-mont font-semibold cursor-pointer hover-font-color"
+          >
             <Link to="/events">EVENTS</Link>
           </li>
-          <li className="font-semibold cursor-pointer">
+          <li
+            onClick={handleLinkClick}
+            className="font-mont font-semibold cursor-pointer hover-font-color"
+          >
             <Link to="/publications">PUBLICATIONS</Link>
           </li>
-          <li className="font-semibold cursor-pointer">
+          <li
+            onClick={handleLinkClick}
+            className="font-mont font-semibold cursor-pointer hover-font-color"
+          >
             <Link to="/news">IN THE NEWS</Link>
           </li>
-          <li className="font-semibold cursor-pointer">
+          <li
+            onClick={handleLinkClick}
+            className="font-mont font-semibold cursor-pointer hover-font-color"
+          >
             <Link to="/membership">MEMBERSHIP</Link>
           </li>
         </ul>
       </div>
-      <div className="xs:max-md:absolute xs:max-md:top-4 xs:max-md:left-20 cursor-pointer flex justify-center items-center bg-secondary h-[2rem] rounded w-[6rem]">
+
+      <div className="xs:max-md:absolute xs:max-md:top-4 xs:max-md:right-20 cursor-pointer hover:bg-white hover:bg-secondary flex justify-center items-center bg-secondary rounded p-2 w-[7rem]">
         <Link to="/contact">
-          <button className="text-[0.75rem] font-semibold cursor-pointer text-center">
+          <button className="text-[12px] font-mont font-semibold cursor-pointer hover-font-color text-center">
             CONTACT US
           </button>
         </Link>

@@ -9,10 +9,12 @@ const Section = ({ image, header, text, type }) => {
         <img src={image} className="w-[15rem] md:w-[25rem]" alt={header} />
       </div>
       <div className="p-[1.5rem] text-left md:w-1/2">
-        <div className="text-[12px] font-bold uppercase md:text-[24px]">
+        <div className="text-[14px] font-bold uppercase md:text-[24px] font-mont">
           {header}
         </div>
-        <p className="text-[10px] text-left md:text-[16px]">{text}</p>
+        <p className="text-[12px] text-left md:text-[16px] max-w-prose font-charter">
+          {text}
+        </p>
       </div>
     </section>
   );
