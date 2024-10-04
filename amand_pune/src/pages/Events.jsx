@@ -4,6 +4,7 @@ import Patriot from "../assets/patriots.png";
 import Patriot17 from "../assets/patriots-2017.png";
 import Ladies from "../assets/ladies.png";
 import Nongin from "../assets/nongin.png";
+
 const Events = () => {
   return (
     <div className="bg-bgColor min-h-screen flex flex-col justify-center items-center py-[2rem] px-[4rem] md:px-[11.5rem] gap-[5rem]">
@@ -21,49 +22,49 @@ Through these initiatives, AMAND Pune promotes unity and a sense of belonging, e
           eventHeader="131st Patriot's Day,2022"
           eventDesc="The 131st Patriots’ Day 2022 was observed on Saturday, 13th August in Pune at the Auditorium of Symbiosis International University, Viman Nagar. The Patriots’ Day."
           eventLongDesc="The 131st Patriots' Day, commemorating the heroes of the Anglo-Manipur War of 1891, was observed on 13th August 2022 in Pune. Organized by the Association of Manipuri Diaspora (AMAND) in collaboration with Symbiosis Ishanya Cultural and Educational Centre, the event brought together over 300 participants to honor the martyrs who fought for Manipur’s sovereignty. The program included floral tributes, patriotic performances, and the premiere of the play `Mareibak Ningba Koirengsana` by the Manipuri Theatre Academy. Director Sarungbam Beeren Singh and the play’s cast were felicitated for their contributions.
-AMAND President, Er. Giridhar Singh Naorem, welcomed the attendees with a solemn address, paying homage to the Manipuri soldiers who sacrificed their lives in defense of their homeland. The event opened with a patriotic song by Milan Sorokhaibam and his team, setting a respectful tone. The main highlight of the evening was the premiere of the play `Mareibak Ningba Koirengsana,` specially designed for this observation, performed by 27 artists from the Manipuri Theatre Academy (MATA). The play depicted key moments from the Anglo-Manipur War, celebrating the courage and determination of the Manipuri freedom fighters.
-During the event, the director of the play, Sarungbam Beeren Singh, was honored with a traditional Manipuri Lengyan (scarf), a memento, and a coconut, presented by AMAND President, Er. Giridhar Singh Naorem. Other senior members of AMAND also felicitated the cast, while Shri Beeren Singh expressed his gratitude to the organization for the opportunity to present this play.
-The evening concluded with a vote of thanks by AMAND Vice President, Shri Kulabidhu Chanam, who acknowledged the generous support of donors, the dedication of the Manipuri Theatre Academy, and the enthusiasm of all attendees, making the event a resounding success."
+          AMAND President, Er. Giridhar Singh Naorem, welcomed the attendees with a solemn address, paying homage to the Manipuri soldiers who sacrificed their lives in defense of their homeland. The event opened with a patriotic song by Milan Sorokhaibam and his team, setting a respectful tone. The main highlight of the evening was the premiere of the play `Mareibak Ningba Koirengsana,` specially designed for this observation, performed by 27 artists from the Manipuri Theatre Academy (MATA). The play depicted key moments from the Anglo-Manipur War, celebrating the courage and determination of the Manipuri freedom fighters.
+          During the event, the director of the play, Sarungbam Beeren Singh, was honored with a traditional Manipuri Lengyan (scarf), a memento, and a coconut, presented by AMAND President, Er. Giridhar Singh Naorem. Other senior members of AMAND also felicitated the cast, while Shri Beeren Singh expressed his gratitude to the organization for the opportunity to present this play.
+          The evening concluded with a vote of thanks by AMAND Vice President, Shri Kulabidhu Chanam, who acknowledged the generous support of donors, the dedication of the Manipuri Theatre Academy, and the enthusiasm of all attendees, making the event a resounding success."
         />
         <EventsCard
           eventImage={Nongin}
           eventHeader="Nongin Gi Tantha -AGM 2017"
-          eventDesc="AMAND organising AGM cum Annual Cultural Evening on 1st October, 2017 (5pm – 10pm). Venue: Symbiosis International University (SIU) Auditorium, Viman Nagar Campus, Pune."
+          eventDesc="AMAND organising AGM cum Annual Cultural Evening on 1st October, 2017 (5pm – 10pm). Venue: Symbiosis International University (SIU) Auditorium, Viman Nagar Campus, Pune."
           eventLongDesc="AMAND organized the AGM cum Annual Cultural Evening on 1st October 2017 at Symbiosis International University, Pune. The event, held under the aegis of the Government of Manipur, celebrated Manipuri culture and honored notable guests and dignitaries.
           AMAND organising AGM cum Annual Cultural Evening on 1st October, 2017 (5pm – 10pm).
-Venue: Symbiosis International University (SIU) Auditorium, Viman Nagar Campus, Pune.
+          Venue: Symbiosis International University (SIU) Auditorium, Viman Nagar Campus, Pune.
 
-Organised by
-AMAND, Pune in association with SICEC, Symbiosis Society, Pune Under the aegis of Govt. Of Manipur, India.
+          Organised by
+          AMAND, Pune in association with SICEC, Symbiosis Society, Pune Under the aegis of Govt. Of Manipur, India.
 
-Theme
-“Let them know us as we know them”
+          Theme
+          “Let them know us as we know them”
 
-Chief Guest
-Padma Bhushan Dr. S. B. Mujumdar, Founder & Chancellor Symbiosis International University, Pune
+          Chief Guest
+          Padma Bhushan Dr. S. B. Mujumdar, Founder & Chancellor Symbiosis International University, Pune
 
-Guest of Honor
-Dr. R. G. Pardeshi
-Principal, Fergusson College, Pune
+          Guest of Honor
+          Dr. R. G. Pardeshi
+          Principal, Fergusson College, Pune
 
-Shri P. R. Ashturkar
-Secy, District Legal Services Authority, Pune
+          Shri P. R. Ashturkar
+          Secy, District Legal Services Authority, Pune
 
-Programme details
-5:00 pm Occupying the dias by Dignitaries 
-5:05 pm Lighting of Lamp
-5:10 pm Felicitation of the Dignitaries
-5:15 pm Welcome Address
-5:20 pm Speech by Shri P. R. Ashturkar
-5:30 pm Speech by Dr. G. R. Pardeshi
-5:40 pm Speech by Padma Bhushan Dr. S. B. Mujumdar 
-5.50 pm Felicitation of L. Devendro Singh, Arjun Awardee 2017
-5:55 pm Felicitation of Ganapati Visarjan dancers team
-6:00 pm Felicitation of freshers
-6:15 pm Presidential Speech
-6:20 pm Vote of Thanks
-6:25 pm Cultural Program
-"
+          Programme details
+          5:00 pm Occupying the dias by Dignitaries 
+          5:05 pm Lighting of Lamp
+          5:10 pm Felicitation of the Dignitaries
+          5:15 pm Welcome Address
+          5:20 pm Speech by Shri P. R. Ashturkar
+          5:30 pm Speech by Dr. G. R. Pardeshi
+          5:40 pm Speech by Padma Bhushan Dr. S. B. Mujumdar 
+          5.50 pm Felicitation of L. Devendro Singh, Arjun Awardee 2017
+          5:55 pm Felicitation of Ganapati Visarjan dancers team
+          6:00 pm Felicitation of freshers
+          6:15 pm Presidential Speech
+          6:20 pm Vote of Thanks
+          6:25 pm Cultural Program
+          "
         />
         <EventsCard
           eventImage={Patriot17}
@@ -79,9 +80,9 @@ Programme details
           eventDesc="The AMAND Ladies’ Club which is a ladies wing of the Association of Manipuri Diaspora (AMAND) Pune, organized the unique aged old traditional Sajibu Cheiraoba."
           eventLongDesc="The AMAND Ladies’ Club, a prominent wing of the Association of Manipuri Diaspora (AMAND) in Pune, proudly hosted the Sajibu Cheiraoba 2017 on Sunday, April 16, 2017. This traditional festival, rooted in the rich cultural heritage of Manipur, took place at the Vidyanchal Sports Academy in Aundh, near Seasons Hotel, from 6:00 PM to 10:30 PM.
 
-The event aimed to promote and protect the vibrant socio-cultural heritage of Manipur, serving as a significant platform for the Manipuri diaspora in Pune to reconnect with their roots. Through a series of engaging activities and performances, the program fostered a spirit of unity and coexistence among participants, allowing them to celebrate their shared identity and traditions far from home.
+          The event aimed to promote and protect the vibrant socio-cultural heritage of Manipur, serving as a significant platform for the Manipuri diaspora in Pune to reconnect with their roots. Through a series of engaging activities and performances, the program fostered a spirit of unity and coexistence among participants, allowing them to celebrate their shared identity and traditions far from home.
 
-The Sajibu Cheiraoba festival is not just a celebration; it embodies the essence of togetherness, cultural pride, and the commitment to preserving the unique heritage of Manipur. Join us in cherishing and promoting the rich traditions that bind our community!"
+          The Sajibu Cheiraoba festival is not just a celebration; it embodies the essence of togetherness, cultural pride, and the commitment to preserving the unique heritage of Manipur. Join us in cherishing and promoting the rich traditions that bind our community!"
         />
       </div>
     </div>
