@@ -9,6 +9,11 @@ export default {
         bgColor: "var(--white-bg)",
         secondary: "var(--secondary-green)",
         textColor: "var(--font-color)",
+        darkGreen: "#00712D",
+      },
+      fontFamily: {
+        charter: ["Charter"],
+        mont: ["Montserrat"],
       },
     },
     screens: {

@@ -11,11 +11,13 @@ const EventCard = ({
     <div className="flex flex-col justify-center items-center gap-3 p-2">
       <img className="w-[27rem] md:h-[266px]" src={eventImage}></img>
       <div className="flex-1">
-        <h1 className="text-center text-2xl font-semibold">{eventHeader}</h1>
-        <p className="text-[14px] text-left md:w-[25rem] md:h-[70px]">
+        <h1 className="text-center text-[20px] md:text-[22px] mb-1 font-semibold font-mont">
+          {eventHeader}
+        </h1>
+        <p className="text-[12px] md:text-[14px] text-left md:w-[25rem] md:h-[70px] font-charter">
           {eventDesc}
         </p>
-        <div className="cursor-pointer text-primary font-bold">
+        <div className="cursor-pointer uppercase text-darkGreen font-bold">
           <Link
             to={"/eventPage"}
             state={{

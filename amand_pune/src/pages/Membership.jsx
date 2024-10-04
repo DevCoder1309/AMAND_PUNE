@@ -3,12 +3,15 @@ import Header from "../components/Header";
 
 const Membership = () => {
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col gap-[2.6rem] justify-center items-center py-[5rem] px-[5rem]">
+    <div
+      className="bg-bgColor min-h-screen flex flex-col md:gap-[5rem] justify-center items-center py-[2rem] px-[4rem]
+    "
+    >
       <Header
         headerName="Membership"
         pageDesc="Membership in AMAND Pune is open to individuals from Manipur, regardless of religion or background, who are of legal age and either employed, self-employed, or retired. Members must adhere to the association's rules and can apply for different membership types: lifetime, regular, or honorary. Each membership type has specific criteria and fees, and applications require approval from the managing committee."
       />
-      <div className="flex flex-col gap-[2.6rem] md:flex-row w-[18rem] md:w-[55rem]">
+      <div className="flex flex-col gap-[1rem] px-[1rem] py-[2rem] md:p-2 md:gap-11 md:flex-row w-[15rem] md:w-[55rem]">
         <PlanCard
           name="lifetime"
           price="₹1000"
@@ -17,7 +20,7 @@ const Membership = () => {
         <PlanCard
           name="honorary"
           price="₹0"
-          planDesc="No membership or admission fees required. Honorary membership is granted to individuals for distinguished service or high public esteem. Members can participate in General Body meetings but are not eligible to vote.."
+          planDesc="No membership or admission fees required. Honorary membership is granted to individuals for distinguished service or high public esteem. Members can participate in General Body meetings but are not eligible to vote."
           special="yes"
         />
         <PlanCard
