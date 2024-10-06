@@ -97,21 +97,12 @@ app.post("/payment", async (req, res) => {
       success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: "http://localhost:5173/cancel",
       customer_email: email,
-      receipt_email: email,
       metadata: { membershipType, name, email, mobile },
     });
     req.session.stripeSessionId = stripeSession.id;
     req.session.user = { membershipType, name, email, mobile };
 
     res.json({ url: stripeSession.url });
-    await stripe.paymentIntents.create({
-      amount: price * 100,
-      currency: "inr",
-      automatic_payment_methods: {
-        enabled: true,
-      },
-      receipt_email: email,
-    });
   } catch (error) {
     console.error("Error creating payment session:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -145,8 +136,22 @@ app.get("/success", async (req, res) => {
         mobile,
       });
       await newUser.save();
+      const mailOptions = {
+        from: "akmklashnikov969@gmail.com",
+        to: email,
+        subject: "Thank you for being a member at amand pune",
+        text: `We have recieved your payment from your mob:${mobile} of your ${membershipType}`,
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
     }
     return res.status(200).json({ message: "User saved successfully!" });
+    
   } catch (error) {
     console.error("Error retrieving session:", error);
     res.status(500).json({ error: "Internal Server Error" });
