@@ -1,12 +1,11 @@
 import PlanCard from "../components/PlanCard";
 import Header from "../components/Header";
+import Breadcrumb from "../components/Breadcrumb";
 
 const Membership = () => {
   return (
-    <div
-      className="bg-bgColor min-h-screen flex flex-col md:gap-[5rem] justify-center items-center py-[2rem] px-[4rem]
-    "
-    >
+    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[5rem] justify-center items-center py-[2rem] px-[4rem]">
+      <Breadcrumb />
       <Header
         headerName="Membership"
         pageDesc="Membership in AMAND Pune is open to individuals from Manipur, regardless of religion or background, who are of legal age and either employed, self-employed, or retired. Members must adhere to the association's rules and can apply for different membership types: lifetime, regular, or honorary. Each membership type has specific criteria and fees, and applications require approval from the managing committee."

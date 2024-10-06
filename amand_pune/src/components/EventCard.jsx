@@ -19,7 +19,7 @@ const EventCard = ({
         </p>
         <div className="cursor-pointer uppercase mt-3 text-darkGreen font-bold">
           <Link
-            to={"/eventPage"}
+            to={"/EventPage"}
             state={{
               eventImage,
               eventName,

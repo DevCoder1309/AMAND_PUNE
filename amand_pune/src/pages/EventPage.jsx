@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumb";
 
 const EventPage = () => {
   const location = useLocation();
@@ -7,6 +8,7 @@ const EventPage = () => {
 
   return (
     <div className="bg-bgColor flex flex-col gap-[3rem] items-center justify-center py-2 px-4 md:px[11.5rem] min-h-screen">
+      <Breadcrumb />
       <img src={eventImage} className="w-[50rem]" />
       <div className="text-2xl font-semibold text-center font-mont">
         {eventName}

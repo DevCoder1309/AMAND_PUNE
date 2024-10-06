@@ -38,45 +38,44 @@ const Navbar = () => {
             onClick={handleLinkClick}
             className="font-mont font-semibold cursor-pointer hover-font-color"
           >
-            <Link to="/events">EVENTS</Link>
+            <Link to="/Events">EVENTS</Link>
           </li>
           <li
             onClick={handleLinkClick}
             className="font-mont font-semibold cursor-pointer hover-font-color"
           >
-            <Link to="/publications">PUBLICATIONS</Link>
+            <Link to="/Publications">PUBLICATIONS</Link>
           </li>
           <li
             onClick={handleLinkClick}
             className="font-mont font-semibold cursor-pointer hover-font-color"
           >
-            <Link to="/news">IN THE NEWS</Link>
+            <Link to="/News">IN THE NEWS</Link>
           </li>
           <li
             onClick={handleLinkClick}
             className="font-mont font-semibold cursor-pointer hover-font-color"
           >
-            <Link to="/membership">MEMBERSHIP</Link>
+            <Link to="/Membership">MEMBERSHIP</Link>
           </li>
         </ul>
       </div>
 
       <div className="flex gap-2 xs:max-md:absolute xs:max-md:top-4 xs:max-md:right-20">
-        <div className="cursor-pointer hover:bg-white hover:bg-secondary flex justify-center items-center bg-secondary rounded p-1 w-[5rem[ md:p-2 md:w-[7rem]">
-          <Link to="/contact">
+        <Link to="/Contact">
+          <div className="cursor-pointer hover:bg-white hover:bg-secondary flex justify-center items-center bg-secondary rounded p-1 w-[5rem[ md:p-2 md:w-[7rem]">
             <button className="text-[10px] md:text-[12px]  font-mont font-semibold cursor-pointer hover-font-color text-center">
               CONTACT US
             </button>
-          </Link>
-        </div>
-
-        <div className="cursor-pointer text-white hover:bg-white hover:bg-secondary flex justify-center items-center bg-darkGreen rounded p-1 w-[5rem[ md:p-2 md:w-[7rem]">
-          <Link to="/membership">
+          </div>
+        </Link>
+        <Link to="/Membership">
+          <div className="cursor-pointer text-white hover:bg-white hover:bg-secondary flex justify-center items-center bg-darkGreen rounded p-1 w-[5rem[ md:p-2 md:w-[7rem]">
             <button className="text-[10px] md:text-[12px] font-mont font-semibold cursor-pointer hover-font-color  text-center">
               JOIN US
             </button>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </div>
   );
