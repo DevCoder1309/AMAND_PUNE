@@ -8,23 +8,24 @@ import News from "./pages/News";
 import Membership from "./pages/Membership";
 import Contact from "./pages/Contact";
 import MembershipForm from "./pages/MembershipForm";
-import Success from "./Success";
+import Success from "./pages/Success";
 import EventPage from "./pages/EventPage";
 function App() {
   return (
     <>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/publications" element={<Publications />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/membership" element={<Membership />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/Events" element={<Events />} />
+        <Route path="/Publications" element={<Publications />} />
+        <Route path="/News" element={<News />} />
+        <Route path="/Membership" element={<Membership />} />
+        <Route path="/Contact" element={<Contact />} />
         <Route path={`/form/:membershipName`} element={<MembershipForm />} />
         <Route path={`/success`} element={<Success />} />
-        <Route path="/form" element={<MembershipForm />} />
-        <Route path="/eventPage" element={<EventPage />} />
+        <Route path="/Form" element={<MembershipForm />} />
+        <Route path="/EventPage" element={<EventPage />} />
       </Routes>
       <Footer />
     </>

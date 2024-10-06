@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import Breadcrumb from "../components/Breadcrumb";
 
 function MembershipForm() {
   const { membershipName } = useParams();
@@ -13,17 +14,15 @@ function MembershipForm() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-  console.log("Form Data:", data);
-  console.log("Form Data:", name);
-  try {
-    const response = await axios.post("http://localhost:3000/payment", {
-      membershipType: membershipName,
-      email: data.email,
-      name: data.name,
-      mobile: data.mobile,
-    });
-
-
+    console.log("Form Data:", data);
+    console.log("Form Data:", name);
+    try {
+      const response = await axios.post("http://localhost:3000/payment", {
+        membershipType: membershipName,
+        email: data.email,
+        name: data.name,
+        mobile: data.mobile,
+      });
 
       if (response.status === 200) {
         if (response.data.url) {
@@ -31,18 +30,20 @@ function MembershipForm() {
         } else {
           navigate("/success");
         }
-
-
-    } else {
-      console.error("Invalid payment session response");
+      } else {
+        console.error("Invalid payment session response");
+      }
+    } catch (error) {
+      console.error(
+        "Error processing payment:",
+        error.response ? error.response.data : error.message
+      );
     }
-  } catch (error) {
-    console.error("Error processing payment:", error.response ? error.response.data : error.message);
-  }
-};
+  };
 
   return (
     <div className="bg-bgColor min-h-screen flex flex-col justify-center items-center px-[4rem]">
+      <Breadcrumb />
       <div className="w-full max-w-[70rem] flex flex-col gap-4 py-[2rem] md:gap-8">
         <Header
           headerName="Membership Form"

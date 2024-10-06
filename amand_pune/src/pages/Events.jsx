@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import eventsData from "../eventData";
 import EventCard from "../components/EventCard";
+import Breadcrumb from "../components/Breadcrumb";
 
 const Events = () => {
   const [eventType, setEventType] = useState("past"); // default to past events
@@ -35,14 +36,15 @@ const Events = () => {
   ));
 
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col justify-center items-center py-[2rem] px-[4rem] md:px-[11.5rem] gap-[5rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[5rem] justify-center items-center py-[2rem] px-[4rem]">
+      <Breadcrumb />
       <Header
         headerName="Events"
         pageDesc="The Association of Manipuri Diaspora (AMAND) Pune conducts a diverse range of events that foster cultural exchange and enhance community involvement. These events celebrate the rich heritage of the Manipuri diaspora, serving as vital platforms for strengthening bonds within the community."
       />
 
       {/* Dropdown for Event Type */}
-      <div className="flex gap-4 mb-2">
+      <div className="flex gap-4 xs:max-md:my-4 my-2">
         <select
           value={eventType}
           onChange={(e) => setEventType(e.target.value)}
