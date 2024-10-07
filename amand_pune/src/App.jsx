@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import MembershipForm from "./pages/MembershipForm";
 import Success from "./pages/Success";
 import EventPage from "./pages/EventPage";
+import PublicationPage from "./pages/PublicationPage";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
         <Route path={`/success`} element={<Success />} />
         <Route path="/Form" element={<MembershipForm />} />
         <Route path="/EventPage" element={<EventPage />} />
+        <Route path="/PublicationPage" element={<PublicationPage />} />
       </Routes>
       <Footer />
     </>
