@@ -4,7 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const Contact = () => {
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[5rem] py-[2rem] px-[4rem] items-center xs:max-md:gap-[3rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] md:gap-[4rem] py-[2rem] px-[4rem] items-center xs:max-md:gap-[3rem]">
       <Breadcrumb />
       <Header
         headerName="Contact Us"
