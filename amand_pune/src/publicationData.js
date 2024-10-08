@@ -20,7 +20,7 @@ const publications = [
     pubName: "Memoirs 2016",
     pubImage: Memoirs,
     pubDesc:
-      "The official memoir of the Association of Manipuri Diaspora (AMAND) has been published to provide information about the association to the general public and to the members, in particular. All possible efforts have been made to ensure the accuracy of the contents.",
+      "The official memoir of the Association of Man`ipuri Diaspora (AMAND) has been published to provide information about the association to the general public and to the members, in particular. All possible efforts have been made to ensure the accuracy of the contents.",
   },
 ];
 
