@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
+import SuccessIcon from "../assets/check.svg";
 
 function Success() {
   const [searchParams] = useSearchParams();
@@ -8,17 +9,28 @@ function Success() {
 
   useEffect(() => {
     if (session_id) {
-      axios.get(`http://localhost:3000/success?session_id=${session_id}`)
-        .then(response => {
+      axios
+        .get(`http://localhost:3000/success?session_id=${session_id}`)
+        .then((response) => {
           console.log(response.data.message);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error validating session", error);
         });
     }
   }, [session_id]);
 
-  return <div>Payment Successful! Thank you for your membership.</div>;
+  return (
+    <div className="bg-bgColor min-h-screen flex flex-col gap-[3rem] justify-center items-center py-[2rem] px-[4rem]">
+      <img className="w-[20rem]" src={SuccessIcon}></img>
+      <div className="text-[24px] font-black font-mont text-center uppercase">
+        Successful
+      </div>
+      <div className="text-[16px] font-mont text-center">
+        Thank you for joining AMAND Pune.
+      </div>
+    </div>
+  );
 }
 
 export default Success;

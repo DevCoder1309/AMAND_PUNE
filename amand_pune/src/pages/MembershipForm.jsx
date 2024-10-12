@@ -42,11 +42,11 @@ function MembershipForm() {
   };
 
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col justify-center items-center px-[4rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] justify-center items-center px-[4rem]">
       <Breadcrumb />
       <div className="w-full max-w-[70rem] flex flex-col gap-4 py-[2rem] md:gap-8">
         <Header
-          headerName="Membership Form"
+          headerName="Form"
           pageDesc="To apply for membership, please complete the form below with accurate and up-to-date information. All required fields must be filled out, including your personal and contact details. The information provided will be used for reviewing your membership application, and it’s essential to ensure that it’s correct. If any discrepancies or errors are found, it could delay the processing of your application or affect your membership status."
         />
 
@@ -137,7 +137,7 @@ function MembershipForm() {
           {/* Submit Button */}
           <div className="bg-secondary font-mont text-textColor text-center p-2 rounded w-[8rem]">
             <button className="uppercase" type="submit">
-              Submit
+              JOIN
             </button>
           </div>
         </form>

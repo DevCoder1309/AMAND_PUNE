@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-
 const Breadcrumb = () => {
   const location = useLocation(); // Get current location
   const pathnames = location.pathname.split("/").filter((x) => x); // Split path into an array
