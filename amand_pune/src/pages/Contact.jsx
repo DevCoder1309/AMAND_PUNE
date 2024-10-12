@@ -14,7 +14,7 @@ const Contact = () => {
         <div className="font-semibold font-mont text-[18px] uppercase">
           Registered Office
         </div>
-        <div className="font-charter text-[12px]">
+        <div className="font-charter text-[12px] md:text-[14px]">
           Association of Manipuri Diaspora (AMAND), Pune
           <br />
           Sana Sanggai
@@ -22,10 +22,10 @@ const Contact = () => {
           Survey No.280, Plot No. 13 Shathe Vasti, Dhanori Road,
           <br /> Lohegaon, Pune 411047
         </div>
-        <div className="font-charter text-[12px]">
+        <div className="font-charter text-[12px] md:text-[14px]">
           <span className="font-semibold">Website:</span> www.amandpune
         </div>
-        <div className="font-charter text-[12px]">
+        <div className="font-charter text-[12px] md:text-[14px]">
           <span className="font-semibold">Email:</span> mail@amandpune.org
         </div>
       </div>

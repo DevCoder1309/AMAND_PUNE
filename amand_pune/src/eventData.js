@@ -14,7 +14,7 @@ import Ladies from "./assets/ladies.jpg";
 const events = [
   {
     key: 1,
-    year: 2023,
+    year: 2024,
     eventImage: Patriot23,
     eventName: "132nd Manipur Patriots' Day",
     eventDesc:
