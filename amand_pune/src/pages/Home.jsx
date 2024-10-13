@@ -2,14 +2,12 @@ import Hero from "../assets/Hero.png";
 import Section from "../components/Section";
 import Mission from "../assets/mission.png";
 import About from "../assets/about.png";
-import Breadcrumb from "../components/Breadcrumb";
 
 function Home() {
   return (
     <div className="bg-bgColor flex flex-col justify-center items-center">
       <img src={Hero} alt="hero" className="w-full" />
       <div className="flex flex-col px-[4rem] py-[2rem] gap-[2rem] md:gap-[4rem]">
-        <Breadcrumb />
         <Section
           image={Mission}
           header="Our Mission"

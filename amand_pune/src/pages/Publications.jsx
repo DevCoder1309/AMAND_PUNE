@@ -16,13 +16,13 @@ const Publications = () => {
     );
   });
   return (
-    <div className="bg-bgColor min-h-screen  flex flex-col gap-[2rem] md:gap-[4rem] justify-center items-center py-[2rem] px-[4rem]">
+    <div className="bg-bgColor min-h-screen  flex flex-col md:gap-[2rem] justify-center items-center py-[2rem] px-[4rem]">
       <Breadcrumb />
       <Header
         headerName="Publications"
         pageDesc="The newsletters provide regular updates on events, initiatives, and developments within the academy, while the memoirs offer deeper reflections on significant experiences and contributions from members of the institution."
       />
-      <div className="flex flex-col gap-7 md:flex-row">{pubList}</div>
+      <div className="flex flex-col gap-[1rem] md:flex-row">{pubList}</div>
     </div>
   );
 };

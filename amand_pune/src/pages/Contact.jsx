@@ -4,13 +4,13 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const Contact = () => {
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] md:gap-[4rem] py-[2rem] px-[4rem] items-center xs:max-md:gap-[3rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[2rem] py-[2rem] px-[4rem] items-center">
       <Breadcrumb />
       <Header
         headerName="Contact Us"
         pageDesc="We welcome your inquiries and feedback! Please reach out to us for any questions regarding our organization, membership, or events. Our team is here to assist you and provide the information you need. Feel free to contact our registered office or connect with our key representatives listed below."
       />
-      <div className="w-full max-w-[70rem] text-left flex flex-col">
+      <div className="w-full max-w-[70rem] text-left flex flex-col mt-4">
         <div className="font-semibold font-mont text-[18px] uppercase">
           Registered Office
         </div>
@@ -31,7 +31,7 @@ const Contact = () => {
       </div>
 
       {/* Contacts Section */}
-      <div className="flex flex-col md:flex-row xs:max-md:gap-[3rem] gap-[10rem] w-full max-w-[70rem]">
+      <div className="flex flex-col md:flex-row xs:max-md:gap-[2rem] gap-[10rem] w-full max-w-[70rem] mt-4">
         <div className="flex flex-col gap-[1rem]">
           <ContactInfo
             contactName="Mr Kulabidhu Chanam"

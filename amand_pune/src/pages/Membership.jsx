@@ -4,7 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const Membership = () => {
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] md:gap-[4rem] justify-center items-center py-[2rem] px-[4rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[2rem] justify-center items-center py-[2rem] px-[4rem]">
       <Breadcrumb />
       <Header
         headerName="Membership"

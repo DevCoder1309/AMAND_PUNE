@@ -21,13 +21,16 @@ function Success() {
   }, [session_id]);
 
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col gap-[3rem] justify-center items-center py-[2rem] px-[4rem]">
-      <img className="w-[20rem]" src={SuccessIcon}></img>
-      <div className="text-[24px] font-black font-mont text-center uppercase">
+    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] pt-[4rem] md:justify-center items-center py-[2rem] px-[4rem]">
+      <img className="w-[10rem]" src={SuccessIcon}></img>
+      {/* <div className="text-[24px] font-black font-mont text-center uppercase">
         Successful
-      </div>
+      </div> */}
       <div className="text-[16px] font-mont text-center">
         Thank you for joining AMAND Pune.
+      </div>
+      <div className="text-[14px] font-mont text-center">
+        Your membership details have been sent to your registered email address.
       </div>
     </div>
   );
