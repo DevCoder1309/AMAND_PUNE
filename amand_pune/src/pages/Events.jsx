@@ -36,7 +36,7 @@ const Events = () => {
   ));
 
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] md:gap-[4rem] justify-center items-center py-[2rem] px-[4rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[2rem] justify-center items-center py-[2rem] px-[4rem]">
       <Breadcrumb />
       <Header
         headerName="Events"
@@ -59,6 +59,7 @@ const Events = () => {
           value={selectedYear}
           onChange={(e) => setSelectedYear(e.target.value)}
           className="p-2 text-[12px] md:text-[16px] bg-primary font-mont border border-gray-300 rounded"
+          disabled={eventType === "upcoming"} // Disable when upcoming is selected
         >
           <option value="">All Years</option>
           {uniqueYears.map((year) => (

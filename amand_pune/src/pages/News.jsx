@@ -1,6 +1,6 @@
 import Breadcrumb from "../components/Breadcrumb";
 import Header from "../components/Header";
-import React from "react";
+import React, { useState } from "react";
 import {
   FaSortUp,
   FaSortDown,
@@ -15,17 +15,21 @@ import {
 import newsData from "../newsData";
 
 const News = () => {
-  const data = React.useMemo(() => newsData, []);
+  const [selectedYear, setSelectedYear] = useState("");
+
+  // Memoized data and columns for optimization
+  const data = React.useMemo(
+    () =>
+      selectedYear
+        ? newsData.filter((article) => article.year === parseInt(selectedYear))
+        : newsData,
+    [selectedYear]
+  );
 
   const columns = React.useMemo(
     () => [
       {
-        Header: "ID",
-        accessor: "id",
-        disableSortBy: false,
-      },
-      {
-        Header: "Article",
+        Header: "News",
         accessor: "article-name",
         Cell: ({ row }) => (
           <a href={row.original.link} className="text-blue-300 hover:underline">
@@ -39,11 +43,6 @@ const News = () => {
         accessor: "date",
         disableSortBy: true,
       },
-      {
-        Header: "Year",
-        accessor: "year",
-        disableSortBy: false,
-      },
     ],
     []
   );
@@ -56,7 +55,6 @@ const News = () => {
     prepareRow,
     canPreviousPage,
     canNextPage,
-    gotoPage,
     previousPage,
     nextPage,
     state: { pageIndex, pageSize },
@@ -70,13 +68,33 @@ const News = () => {
     usePagination
   );
 
+  // Get unique years from newsData for filtering
+  const uniqueYears = [...new Set(newsData.map((article) => article.year))];
+
   return (
-    <div className="bg-bgColor min-h-screen flex flex-col gap-[2rem] md:gap-[4rem] justify-center items-center py-[2rem] px-[4rem]">
+    <div className="bg-bgColor min-h-screen flex flex-col md:gap-[2rem] justify-center items-center py-[2rem] px-[4rem]">
       <Breadcrumb />
       <Header
         headerName="News"
         pageDesc="The News page provides a curated list of articles and updates featuring AMAND Pune, showcasing its latest activities, initiatives, and media coverage."
       />
+
+      {/* Year Filter Dropdown */}
+      <div className="flex justify-center w-full max-w-4xl mb-4">
+        <select
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(e.target.value)}
+          className="p-2 text-[12px] md:text-[16px] border font-mont bg-primary border-gray-300 rounded"
+        >
+          <option value="">All Years</option>
+          {uniqueYears.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="w-full max-w-4xl">
         {/* Table container */}
         <div className="w-full">
@@ -97,7 +115,6 @@ const News = () => {
                       key={column.id}
                       className="text-left tracking-wider px-2 py-2 text-xs sm:px-3 sm:py-2 sm:text-sm md:px-4 md:py-3 md:text-base font-medium"
                     >
-                      {/* Use flex to align text and icon on the same line */}
                       <div className="flex items-center">
                         {column.render("Header")}
                         <span className="ml-1">
