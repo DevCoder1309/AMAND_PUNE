@@ -9,6 +9,7 @@ const stripe = require("stripe")(process.env.SECRET_TOKEN);
 const nodemailer = require("nodemailer");
 const User = require("./models/users"); 
 const session = require('express-session');
+const Donation = require('./models/donation');
 const app = express();
 
 
@@ -157,6 +158,89 @@ app.get("/success", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+app.post("/donate", async (req, res) => {
+  const { email, name, mobile, amount, comment} = req.body;
+
+
+  try {
+    const product = await stripe.products.create({
+      name: "Donation",
+    });
+
+    const priceData = await stripe.prices.create({
+      product: product.id,
+      unit_amount: amount * 100,
+      currency: "inr",
+    });
+
+    const stripeSession = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price: priceData.id,
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      success_url: `http://localhost:5173/confirm?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: "http://localhost:5173/cancel",
+      customer_email: email,
+      metadata: { name, email, mobile, amount, comment },
+    });
+    req.session.stripeSessionId = stripeSession.id;
+    req.session.user = { name, email, mobile, amount };
+
+    res.json({ url: stripeSession.url });
+  } catch (error) {
+    console.error("Error creating payment session:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get('/confirm', async (req, res) => {
+  const session_id = req.query.session_id;
+
+  if (!session_id) {
+    return res.status(400).json({ error: "Invalid session" });
+  }
+
+  try {
+ 
+    const session = await stripe.checkout.sessions.retrieve(session_id);
+
+    if (!session || session.payment_status !== "paid") {
+      return res.status(400).json({ error: "Payment not verified" });
+    }
+
+    const { email, name, mobile, amount, comment } = session.metadata;
+    const newUser = new Donation({
+      name,
+      email,
+      mobile,
+      amount,
+      comment
+    });
+    await newUser.save();
+    const mailOptions = {
+      from: "akmklashnikov969@gmail.com",
+      to: email,
+      subject: "Thank you for Donating, please contact xxxxxxx____yyyyyy",
+      text: `We have recieved your payment from your mob:${mobile}`,
+    };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+  return res.status(200).json({ message: "User saved successfully!" });
+    
+  } catch (error) {
+    console.error("Error retrieving session:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");

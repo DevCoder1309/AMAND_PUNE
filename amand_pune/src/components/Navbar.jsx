@@ -58,6 +58,12 @@ const Navbar = () => {
           >
             <Link to="/Membership">MEMBERSHIP</Link>
           </li>
+          <li
+            onClick={handleLinkClick}
+            className="font-mont font-semibold cursor-pointer hover-font-color"
+          >
+            <Link to="/Donation">DONATION</Link>
+          </li>
         </ul>
       </div>
 

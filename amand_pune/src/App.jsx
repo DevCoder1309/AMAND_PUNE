@@ -11,6 +11,8 @@ import MembershipForm from "./pages/MembershipForm";
 import Success from "./pages/Success";
 import EventPage from "./pages/EventPage";
 import PublicationPage from "./pages/PublicationPage";
+import Donation from "./pages/Donation";
+import Confirm from "./pages/Confirm"
 function App() {
   return (
     <>
@@ -24,9 +26,11 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path={`/form/:membershipName`} element={<MembershipForm />} />
         <Route path={`/success`} element={<Success />} />
+        <Route path={`/confirm`} element={<Confirm />} />
         <Route path="/Form" element={<MembershipForm />} />
         <Route path="/EventPage" element={<EventPage />} />
         <Route path="/PublicationPage" element={<PublicationPage />} />
+        <Route path="/Donation" element={<Donation />} />
       </Routes>
       <Footer />
     </>
