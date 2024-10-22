@@ -224,7 +224,7 @@ app.get('/confirm', async (req, res) => {
     const mailOptions = {
       from: "akmklashnikov969@gmail.com",
       to: email,
-      subject: "Thank you for Donating, please contact xxxxxxx____yyyyyy",
+      subject: "Thank you for Donating, We recieved your payment your transaction id is TS_12865re43QW",
       text: `We have recieved your payment from your mob:${mobile}`,
     };
     transporter.sendMail(mailOptions, function (error, info) {

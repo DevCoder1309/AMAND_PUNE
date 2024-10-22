@@ -16,3 +16,11 @@ services:
       - "5173:5173"
     environment:
       HOST: "0.0.0.0"
+
+  chatbot:
+    build: 
+      context: ./chatbot
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    command: ["python", "chatbot.py"]

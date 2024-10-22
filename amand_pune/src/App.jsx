@@ -12,7 +12,9 @@ import Success from "./pages/Success";
 import EventPage from "./pages/EventPage";
 import PublicationPage from "./pages/PublicationPage";
 import Donation from "./pages/Donation";
-import Confirm from "./pages/Confirm"
+import Confirm from "./pages/Confirm";
+import Chatbot from "./pages/Chatbot"; 
+
 function App() {
   return (
     <>
@@ -32,6 +34,7 @@ function App() {
         <Route path="/PublicationPage" element={<PublicationPage />} />
         <Route path="/Donation" element={<Donation />} />
       </Routes>
+      <Chatbot /> {/* Add Chatbot component here */}
       <Footer />
     </>
   );
