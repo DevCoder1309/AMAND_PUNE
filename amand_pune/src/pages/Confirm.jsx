@@ -10,7 +10,7 @@ function Success() {
   useEffect(() => {
     if (session_id) {
       axios
-        .get(`http://localhost:3000/confirm?session_id=${session_id}`)
+        .get(`/api/confirm?session_id=${session_id}`)
         .then((response) => {
           console.log(response.data.message);
         })

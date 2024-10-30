@@ -1,11 +1,12 @@
-FROM python:3.8.2-alpine
+FROM python:3.8.5-alpine3.12
 
-WORKDIR '/chatbot'
+WORKDIR /chatbot
 
+# EXPOSE 5000
+ENV FLASK_APP=chatbot.py
+
+COPY . .
 RUN pip install flask flask-cors
 
-COPY chatbot.py ./
-
-EXPOSE 5000
-
-CMD ["python", "chatbot.py"]
+ENTRYPOINT [ "flask"]
+CMD [ "run", "--host", "0.0.0.0" ]

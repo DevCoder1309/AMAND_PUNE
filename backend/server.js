@@ -1,7 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
@@ -33,7 +29,7 @@ app.use(session(secretConfig));
 
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/amand")
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
   })
@@ -95,8 +91,8 @@ app.post("/payment", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: `${process.env.SUCCESS_URL}`,
+      cancel_url: `${process.env.CANCEL_URL}`,
       customer_email: email,
       metadata: { membershipType, name, email, mobile },
     });
@@ -182,8 +178,8 @@ app.post("/donate", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `http://localhost:5173/confirm?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: `${process.env.CONFIRM_URL}`,
+      cancel_url: `${process.env.CANCEL_URL}`,
       customer_email: email,
       metadata: { name, email, mobile, amount, comment },
     });

@@ -1,26 +1,31 @@
 version: '3'
 services:
+  mongodb:
+    image: mongo:latest
+    restart: always
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
+    env_file:
+      - path: ./backend/.env
+        required: true 
+  nginx:
+    depends_on:
+      - backend
+      - frontend
+      - chatbot
+    restart: always
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.dev
     ports:
-      - "3000:3000"  
-    command: ["node", "server.js"]
-  
+      - "80:80"
   frontend:
     build: 
       context: ./amand_pune
       dockerfile: Dockerfile.dev
-    ports:
-      - "5173:5173"
-    environment:
-      HOST: "0.0.0.0"
-
   chatbot:
     build: 
       context: ./chatbot
       dockerfile: Dockerfile.dev
-    ports:
-      - "5000:5000"
-    command: ["python", "chatbot.py"]

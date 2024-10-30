@@ -14,9 +14,11 @@ def chatbot_response(message):
 
 @app.route('/chatbot', methods=['POST'])
 def chat():
+    print("message revieved")
     data = request.json
     user_message = data.get('message')
     response = chatbot_response(user_message)
+    print("sending response")
     return jsonify({'response': response})
 
 if __name__ == '__main__':

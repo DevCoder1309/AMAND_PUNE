@@ -17,7 +17,7 @@ function MembershipForm() {
     console.log("Form Data:", data);
     console.log("Form Data:", name);
     try {
-      const response = await axios.post("http://localhost:3000/donate", {
+      const response = await axios.post("/api/donate", {
         email: data.email,
         name: data.name,
         mobile: data.mobile,

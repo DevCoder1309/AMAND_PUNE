@@ -17,7 +17,7 @@ function MembershipForm() {
     console.log("Form Data:", data);
     console.log("Form Data:", name);
     try {
-      const response = await axios.post("http://localhost:3000/payment", {
+      const response = await axios.post("/api/payment", {
         membershipType: membershipName,
         email: data.email,
         name: data.name,
