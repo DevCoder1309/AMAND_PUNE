@@ -3,30 +3,27 @@ const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.SECRET_TOKEN);
 const nodemailer = require("nodemailer");
-const User = require("./models/users"); 
-const session = require('express-session');
-const Donation = require('./models/donation');
+const User = require("./models/users");
+const session = require("express-session");
+const Donation = require("./models/donation");
+const cron = require("node-cron");
 const app = express();
-
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-
 const secretConfig = {
-    secret: "thisshouldbeabettersecret",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
+  secret: "thisshouldbeabettersecret",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
     expires: Date.now() + 10,
-    maxAge: 10
+    maxAge: 10,
   },
 };
 
-
 app.use(session(secretConfig));
-
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -36,8 +33,6 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -106,7 +101,6 @@ app.post("/payment", async (req, res) => {
   }
 });
 
-
 app.get("/success", async (req, res) => {
   const session_id = req.query.session_id;
 
@@ -115,7 +109,6 @@ app.get("/success", async (req, res) => {
   }
 
   try {
- 
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     if (!session || session.payment_status !== "paid") {
@@ -124,13 +117,18 @@ app.get("/success", async (req, res) => {
 
     const { membershipType, email, name, mobile } = session.metadata;
 
-    const member = await User.findOne({name: name, membershipType: membershipType})
-    if(!member){
+    const member = await User.findOne({
+      name: name,
+      membershipType: membershipType,
+    });
+    const date = new Date();
+    if (!member) {
       const newUser = new User({
         name,
         email,
         membershipType,
         mobile,
+        date,
       });
       await newUser.save();
       const mailOptions = {
@@ -148,7 +146,6 @@ app.get("/success", async (req, res) => {
       });
     }
     return res.status(200).json({ message: "User saved successfully!" });
-    
   } catch (error) {
     console.error("Error retrieving session:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -156,8 +153,7 @@ app.get("/success", async (req, res) => {
 });
 
 app.post("/donate", async (req, res) => {
-  const { email, name, mobile, amount, comment} = req.body;
-
+  const { email, name, mobile, amount, comment } = req.body;
 
   try {
     const product = await stripe.products.create({
@@ -193,7 +189,7 @@ app.post("/donate", async (req, res) => {
   }
 });
 
-app.get('/confirm', async (req, res) => {
+app.get("/confirm", async (req, res) => {
   const session_id = req.query.session_id;
 
   if (!session_id) {
@@ -201,7 +197,6 @@ app.get('/confirm', async (req, res) => {
   }
 
   try {
- 
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     if (!session || session.payment_status !== "paid") {
@@ -214,13 +209,14 @@ app.get('/confirm', async (req, res) => {
       email,
       mobile,
       amount,
-      comment
+      comment,
     });
     await newUser.save();
     const mailOptions = {
       from: "akmklashnikov969@gmail.com",
       to: email,
-      subject: "Thank you for Donating, We recieved your payment your transaction id is TS_12865re43QW",
+      subject:
+        "Thank you for Donating, We recieved your payment your transaction id is TS_12865re43QW",
       text: `We have recieved your payment from your mob:${mobile}`,
     };
     transporter.sendMail(mailOptions, function (error, info) {
@@ -230,13 +226,53 @@ app.get('/confirm', async (req, res) => {
         console.log("Email sent: " + info.response);
       }
     });
-  return res.status(200).json({ message: "User saved successfully!" });
-    
+    return res.status(200).json({ message: "User saved successfully!" });
   } catch (error) {
     console.error("Error retrieving session:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-})
+});
+
+
+async function sendEmail(user) {
+  const transporter = nodemailer.createTransport({
+    service: "your_email_service_provider",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: user.email,
+    subject: "Membership Expiration Notice",
+    text: `Dear ${user.name}, your membership subscription has expired. Please pay at <url> to renew your membership.`,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Email sent to ${user.email}`);
+  } catch (error) {
+    console.error(`Failed to send email to ${user.email}:`, error);
+  }
+}
+
+
+cron.schedule("0 9 * * *", async () => {
+  try {
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() - 30);
+
+    const expiredUsers = await User.find({ date: { $lte: expirationDate } });
+
+    for (const user of expiredUsers) {
+      await sendEmail(user);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");
