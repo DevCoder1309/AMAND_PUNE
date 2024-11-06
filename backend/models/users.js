@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   membershipType: String,
   mobile: Number,
-  Date: Date
+  date: Date
 });
 
 module.exports = mongoose.model("User", userSchema);

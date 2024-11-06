@@ -7,6 +7,7 @@ const User = require("./models/users");
 const session = require("express-session");
 const Donation = require("./models/donation");
 const cron = require("node-cron");
+const Admin = require("./models/admin");
 const app = express();
 
 app.use(cors());
@@ -33,6 +34,23 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+async function makeAdmin(){
+    const admin = await Admin.findOne({
+    username: process.env.USER_ADMIN,
+    password: process.env.USER_PASSWD,
+  });
+  if (!admin) {
+    const newUser = new Admin({
+      username: process.env.USER_ADMIN,
+      password: process.env.USER_PASSWD,
+    });
+    await newUser.save();
+    console.log("Admin Data saved successfully");
+  }
+}
+
+makeAdmin()
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -122,6 +140,7 @@ app.get("/success", async (req, res) => {
       membershipType: membershipType,
     });
     const date = new Date();
+    console.log(date)
     if (!member) {
       const newUser = new User({
         name,
@@ -233,7 +252,6 @@ app.get("/confirm", async (req, res) => {
   }
 });
 
-
 async function sendEmail(user) {
   const transporter = nodemailer.createTransport({
     service: "your_email_service_provider",
@@ -257,6 +275,49 @@ async function sendEmail(user) {
     console.error(`Failed to send email to ${user.email}:`, error);
   }
 }
+
+app.get("/getUsers", async (req, res) => {
+  try {
+    const users = await User.find({}); 
+    res.json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.post("/delete", async (req, res) => {
+  try {
+    const { name, membershipType, date } = req.body;
+    const deletedUser = await User.findOneAndDelete({
+      name,
+      membershipType,
+      date: new Date(date),
+    });
+
+    if (deletedUser) {
+      res.status(200).json({ message: "User deleted successfully" });
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred while deleting the user" });
+  }
+});
+
+app.post("/admin", (req, res) => {
+  const { username, password } = req.query;
+  const admin = Admin.findOne({username: process.env.USER_ADMIN, password: process.env.USER_PASSWD})
+  if (username === admin.username && password === admin.password) {
+    res.status(200).json({ isAdmin: true });
+  } else {
+    res.status(401).json({ isAdmin: false });
+  }
+});
+
 
 
 cron.schedule("0 9 * * *", async () => {

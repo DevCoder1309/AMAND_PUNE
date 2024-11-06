@@ -64,6 +64,12 @@ const Navbar = () => {
           >
             <Link to="/Donation">DONATION</Link>
           </li>
+          <li
+            onClick={handleLinkClick}
+            className="font-mont font-semibold cursor-pointer hover-font-color"
+          >
+            <Link to="/Admin">ADMIN</Link>
+          </li>
         </ul>
       </div>
 

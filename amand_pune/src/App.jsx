@@ -14,6 +14,8 @@ import PublicationPage from "./pages/PublicationPage";
 import Donation from "./pages/Donation";
 import Confirm from "./pages/Confirm";
 import Chatbot from "./pages/Chatbot"; 
+import AdminPage from "./pages/AdminPage";
+import Login from "./pages/Login"
 
 function App() {
   return (
@@ -33,8 +35,9 @@ function App() {
         <Route path="/EventPage" element={<EventPage />} />
         <Route path="/PublicationPage" element={<PublicationPage />} />
         <Route path="/Donation" element={<Donation />} />
+        <Route path="/Admin" element={<Login />} />
       </Routes>
-      <Chatbot /> {/* Add Chatbot component here */}
+      <Chatbot /> 
       <Footer />
     </>
   );
