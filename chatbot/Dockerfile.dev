@@ -2,11 +2,19 @@ FROM python:3.8.5-alpine3.12
 
 WORKDIR /chatbot
 
-# EXPOSE 5000
+RUN apk add --no-cache gcc musl-dev
+
 ENV FLASK_APP=chatbot.py
 
 COPY . .
-RUN pip install flask flask-cors
+RUN pip install flask flask-cors nltk
+RUN pip install nltk && \
+    mkdir ~/nltk_data && \
+    mkdir ~/nltk_data/chunkers && \
+    mkdir ~/nltk_data/corpora && \
+    mkdir ~/nltk_data/taggers && \
+    mkdir ~/nltk_data/tokenizers && \
+    python -c "import nltk; nltk.download('all')"
 
-ENTRYPOINT [ "flask"]
+ENTRYPOINT [ "flask" ]
 CMD [ "run", "--host", "0.0.0.0" ]
