@@ -1,6 +1,6 @@
 # this is a development docker file for the frontend application
 
-FROM node:16-alpine
+FROM node:18-alpine
 
 USER node
 
