@@ -14,7 +14,6 @@ services:
     depends_on:
       - backend
       - frontend
-      - chatbot
     restart: always
     build: 
       context: ./nginx
@@ -25,7 +24,7 @@ services:
     build: 
       context: ./amand_pune
       dockerfile: Dockerfile.dev
-  chatbot:
-    build: 
-      context: ./chatbot
-      dockerfile: Dockerfile.dev
+  # chatbot:
+  #   build: 
+  #     context: ./chatbot
+  #     dockerfile: Dockerfile.dev
